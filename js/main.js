@@ -9,21 +9,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* --- Mobile nav toggle ---------------------------------- */
 function initNav() {
+  const nav = document.querySelector(".nav");
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
-  if (!toggle || !links) return;
+  if (!nav || !toggle || !links) return;
+
+  const setOpen = (isOpen) => {
+    nav.classList.toggle("menu-open", isOpen);
+    document.body.classList.toggle("menu-open", isOpen);
+    toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    toggle.setAttribute("aria-label", isOpen ? "Close menu" : "Menu");
+  };
 
   toggle.addEventListener("click", () => {
-    const open = links.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    setOpen(!nav.classList.contains("menu-open"));
   });
 
-  // Close menu when a link is tapped
+  // Close when a nav link is tapped
   links.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", () => {
-      links.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
-    });
+    a.addEventListener("click", () => setOpen(false));
+  });
+
+  // Also close when the CTA is tapped (it's inside nav on mobile)
+  const cta = document.querySelector(".nav-cta");
+  if (cta) cta.addEventListener("click", () => setOpen(false));
+
+  // Close on Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("menu-open")) setOpen(false);
+  });
+
+  // If the viewport resizes past the mobile breakpoint while open, close it
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 860 && nav.classList.contains("menu-open")) setOpen(false);
   });
 }
 
