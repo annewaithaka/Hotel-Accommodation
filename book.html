@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Stay — Baraka Collection</title>
+  <meta name="description" content="Reserve a room at Baraka Diani, Naivasha, or Nairobi. We confirm all bookings within one working day." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <nav class="nav on-light">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">Baraka Collection</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="diani.html">Diani</a></li>
+        <li><a href="naivasha.html">Naivasha</a></li>
+        <li><a href="nairobi.html">Nairobi</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="book.html" class="nav-cta">Book a stay</a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+
+  <main class="book-page" style="padding-top: calc(var(--nav-height) + 64px);">
+    <div class="container" style="max-width: 900px;">
+
+      <div style="margin-bottom: 48px; text-align: center;">
+        <span class="eyebrow">Reservation request</span>
+        <h1 class="display-lg" style="margin-top: 12px;">Book a stay.</h1>
+        <p class="lede" style="margin: 20px auto 0;">Tell us where and when. We confirm all bookings by email within one working day, and take payment only once your dates are confirmed.</p>
+      </div>
+
+      <!-- SUCCESS STATE (hidden until submit) -->
+      <div class="form-success" id="booking-success">
+        <h3 class="display-md">Thank you — request received.</h3>
+        <p>We'll be in touch by email within one working day to confirm your dates and next steps. If you don't hear from us, please check your spam folder, or call us on +254&nbsp;700&nbsp;000&nbsp;000.</p>
+      </div>
+
+      <!-- FORM -->
+      <form class="book-form" id="booking-form" novalidate>
+        <h3 class="display-md">Your details</h3>
+        <p class="form-intro">All fields marked with * are required.</p>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="full_name">Full name *</label>
+            <input type="text" id="full_name" name="full_name" required autocomplete="name" />
+          </div>
+          <div class="form-field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="phone">Phone *</label>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+254…" />
+          </div>
+          <div class="form-field">
+            <label for="location">Property *</label>
+            <select id="location" name="location" required>
+              <option value="">Choose a property</option>
+              <option value="diani">Baraka Diani — coast</option>
+              <option value="naivasha">Baraka Naivasha — lake</option>
+              <option value="nairobi">Baraka Nairobi — city</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row triple">
+          <div class="form-field">
+            <label for="check_in">Check-in *</label>
+            <input type="date" id="check_in" name="check_in" required />
+          </div>
+          <div class="form-field">
+            <label for="check_out">Check-out *</label>
+            <input type="date" id="check_out" name="check_out" required />
+          </div>
+          <div class="form-field">
+            <label for="room_type">Room type *</label>
+            <select id="room_type" name="room_type" required>
+              <option value="">Choose</option>
+              <option value="standard">Standard double</option>
+              <option value="premium">Premium / ocean or lake view</option>
+              <option value="suite">Suite</option>
+              <option value="family">Family (sleeps 3–4)</option>
+              <option value="not_sure">Not sure — recommend for me</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="adults">Adults *</label>
+            <select id="adults" name="adults" required>
+              <option value="1">1 adult</option>
+              <option value="2" selected>2 adults</option>
+              <option value="3">3 adults</option>
+              <option value="4">4 adults</option>
+              <option value="5+">5 or more</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="children">Children</label>
+            <select id="children" name="children">
+              <option value="0" selected>No children</option>
+              <option value="1">1 child</option>
+              <option value="2">2 children</option>
+              <option value="3">3 children</option>
+              <option value="4+">4 or more</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row single">
+          <div class="form-field">
+            <label for="notes">Anything we should know?</label>
+            <textarea id="notes" name="notes" placeholder="Special occasion, dietary needs, arrival time, transfers…"></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Send booking request</button>
+          <span class="form-note">No payment is taken now. We confirm within one working day.</span>
+        </div>
+      </form>
+
+      <!-- FAQs -->
+      <div style="margin-top: 96px;">
+        <span class="eyebrow">Good to know</span>
+        <h2 class="display-md" style="margin-top: 12px; margin-bottom: 40px;">Before you book.</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px;">
+          <div>
+            <h4 style="margin-bottom: 8px;">Check-in &amp; check-out</h4>
+            <p style="color: var(--slate); font-size: 0.95rem;">Check-in from 2:00 p.m., check-out by 11:00 a.m. Early or late arrivals possible on request.</p>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 8px;">Payment</h4>
+            <p style="color: var(--slate); font-size: 0.95rem;">50% deposit on confirmation, balance on arrival. M-Pesa, bank transfer, and card accepted.</p>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 8px;">Cancellation</h4>
+            <p style="color: var(--slate); font-size: 0.95rem;">Free cancellation up to 14 days before your check-in date. Full deposit charged after that.</p>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 8px;">Children</h4>
+            <p style="color: var(--slate); font-size: 0.95rem;">Warmly welcomed at all three properties. Cots and high chairs on request.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" style="margin-top: 96px;">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-block">Baraka Collection</div>
+          <p class="footer-blurb">Three small Kenyan hotels, run with care. Coast, lake, and city.</p>
+        </div>
+        <div>
+          <h5>Properties</h5>
+          <ul>
+            <li><a href="diani.html">Baraka Diani</a></li>
+            <li><a href="naivasha.html">Baraka Naivasha</a></li>
+            <li><a href="nairobi.html">Baraka Nairobi</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Visit</h5>
+          <ul>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="book.html">Book a stay</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Get in touch</h5>
+          <ul>
+            <li>hello@barakacollection.co.ke</li>
+            <li>+254 700 000 000</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Baraka Collection. All rights reserved.</div>
+        <div>Made in Kenya.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
