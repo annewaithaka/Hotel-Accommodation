@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Malewa Riverside Resort">
+  <rect width="64" height="64" rx="13" fill="#1F2A20"/>
+  <path d="M18 42V24l14 13 14-13v18" fill="none" stroke="#F5EFE4" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="none" stroke="#C99E3B" stroke-width="2.4" stroke-linecap="round">
+    <path d="M11 51.5a5.25 3 0 0 1 10.5 0a5.25 3 0 0 1 10.5 0a5.25 3 0 0 1 10.5 0a5.25 3 0 0 1 10.5 0"/>
+    <path d="M11 58.5a5.25 3 0 0 1 10.5 0a5.25 3 0 0 1 10.5 0a5.25 3 0 0 1 10.5 0a5.25 3 0 0 1 10.5 0" stroke-opacity="0.5"/>
+  </g>
+</svg>
