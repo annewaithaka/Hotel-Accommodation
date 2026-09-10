@@ -25,6 +25,7 @@ Then visit `http://localhost:8000`.
 ```bash
 node tools/build-pages.mjs    # regenerates every .html file from the shared shell
 node tools/check-site.mjs     # QA: fictional content, links, SEO, a11y basics, image slots
+node tools/photo-checklist.mjs --csv   # rebuild the photo checklist and shot list
 ```
 
 The published pages are plain HTML and work without any build step.
@@ -56,6 +57,8 @@ js/main.js              Navigation, lightbox, photo slots, enquiry form
 assets/images/          Client photography, by property — see assets/images/README.md
 tools/build-pages.mjs   Page builder (shared shell + page content)
 tools/check-site.mjs    Static QA checks
+tools/photo-checklist.mjs  Generates the photo checklist and shot-list CSV
+ADDING-PHOTOS.md        Guide for whoever adds the photography
 MALEWA-CONTENT-AUDIT.md Confirmed facts vs. what still needs client confirmation
 robots.txt, sitemap.xml SEO plumbing
 ```
@@ -88,6 +91,10 @@ claim is not in the Confirmed section, it does not go on a page.
 Every photograph is a labelled local slot under `assets/images/`. Missing files
 render a quiet, on-brand placeholder naming the slot — never a broken image, and
 never stock or AI-generated imagery standing in for the real property.
+
+**Handing the photography to someone else?** Give them [ADDING-PHOTOS.md](ADDING-PHOTOS.md)
+— a plain-language guide that needs no coding, plus
+`assets/images/PHOTO-CHECKLIST.md`, a tick-box list of every slot.
 
 Drop the client's photographs in at the paths in `assets/images/README.md` and
 they appear immediately.

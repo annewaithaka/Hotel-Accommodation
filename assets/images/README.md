@@ -4,6 +4,11 @@ Every photograph on the site is a **labelled slot**. If the file is not there
 yet, the layout shows an on-brand placeholder naming the slot and the exact
 filename it expects — instead of a broken image or an unrelated stock photo.
 
+> **Handing this to someone who does not code?** Start them on
+> [`ADDING-PHOTOS.md`](../../ADDING-PHOTOS.md) — a plain-language walkthrough —
+> and give them `PHOTO-CHECKLIST.md` in this folder, which lists every slot with
+> a tick box. Regenerate it any time with `node tools/photo-checklist.mjs`.
+
 Nothing is invented. Drop the real photograph in at the path below and it appears
 immediately. No code changes, no rebuild.
 
