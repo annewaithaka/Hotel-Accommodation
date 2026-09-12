@@ -1,4 +1,3 @@
-@"
 # OS
 .DS_Store
 Thumbs.db
@@ -11,7 +10,10 @@ Thumbs.db
 # Logs
 *.log
 
-# Env
+# Environment
 .env
 .env.local
-"@ | Out-File -Encoding utf8 .gitignore
+
+# Local preview
+.cache/
+node_modules/

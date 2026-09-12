@@ -2,202 +2,346 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book a Stay — Baraka Collection</title>
-  <meta name="description" content="Reserve a room at Baraka Diani, Naivasha, or Nairobi. We confirm all bookings within one working day." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Book / Enquire | Malewa, Clavina &amp; Clavina Pax</title>
+  <meta name="description" content="Send a booking or dining enquiry for Malewa Riverside Resort & Cottages, Clavina or Clavina Pax. Choose your property, dates and requirements — with an indicative rate for Malewa stays." />
+  <link rel="canonical" href="https://malewariversideresort.co.ke/book.html" />
+  <meta name="theme-color" content="#1F2A20" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Our Properties" />
+  <meta property="og:locale" content="en_KE" />
+  <meta property="og:title" content="Book / make an enquiry" />
+  <meta property="og:description" content="One enquiry form for the group's three properties: Malewa, Clavina and Clavina Pax." />
+  <meta property="og:url" content="https://malewariversideresort.co.ke/book.html" />
+  <meta property="og:image" content="https://malewariversideresort.co.ke/assets/images/branding/malewa-riverside-social.jpg" />
+  <meta property="og:image:alt" content="Malewa Riverside Resort &amp; Cottages, Gilgil" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Book / make an enquiry" />
+  <meta name="twitter:description" content="One enquiry form for the group's three properties: Malewa, Clavina and Clavina Pax." />
+  <meta name="twitter:image" content="https://malewariversideresort.co.ke/assets/images/branding/malewa-riverside-social.jpg" />
+
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
+
 </head>
 <body>
 
-  <nav class="nav on-light">
-    <div class="nav-inner">
-      <a href="index.html" class="brand">Baraka Collection</a>
-      <ul class="nav-links">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="site-nav site-nav--solid" aria-label="Main">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="index.html">
+        Our Properties
+        <small>Malewa · Clavina · Clavina Pax</small>
+      </a>
+      <ul class="site-nav__links" id="site-menu">
         <li><a href="index.html">Home</a></li>
-        <li><a href="diani.html">Diani</a></li>
-        <li><a href="naivasha.html">Naivasha</a></li>
-        <li><a href="nairobi.html">Nairobi</a></li>
+        <li><a href="properties.html">Properties</a></li>
+        <li><a href="stay.html">Stay</a></li>
+        <li><a href="dining.html">Dining</a></li>
+        <li><a href="experiences.html">Experiences</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <a href="book.html" class="nav-cta">Book a stay</a>
-      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      <a class="site-nav__cta" href="book.html">Book / Enquire</a>
+      <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span></span></button>
     </div>
   </nav>
 
-  <main class="book-page" style="padding-top: calc(var(--nav-height) + 64px);">
-    <div class="container" style="max-width: 900px;">
-
-      <div style="margin-bottom: 48px; text-align: center;">
-        <span class="eyebrow">Reservation request</span>
-        <h1 class="display-lg" style="margin-top: 12px;">Book a stay.</h1>
-        <p class="lede" style="margin: 20px auto 0;">Tell us where and when. We confirm all bookings by email within one working day, and take payment only once your dates are confirmed.</p>
+  <main id="main" class="section book-page">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Enquiry</span>
+        <h1 class="display-lg">Book / make an enquiry.</h1>
+        <p class="lede">Tell us which property you are asking about and what you have in mind. We will reply with availability and the applicable rate. Nothing is charged through this form, and no booking is confirmed until we come back to you.</p>
       </div>
 
-      <!-- SUCCESS STATE (hidden until submit) -->
-      <div class="form-success" id="booking-success">
-        <h3 class="display-md">Thank you — request received.</h3>
-        <p>We'll be in touch by email within one working day to confirm your dates and next steps. If you don't hear from us, please check your spam folder, or call us on +254&nbsp;700&nbsp;000&nbsp;000.</p>
+      <div class="notice notice--status" id="enquiry-status" tabindex="-1" hidden></div>
+
+      <div class="form-panel">
+        <form id="enquiry-form" novalidate data-endpoint="">
+          <fieldset class="form-fieldset">
+            <legend class="form-legend">Your details</legend>
+            <div class="form-row">
+              <div class="field">
+                <label for="full_name">Full name</label>
+                <input type="text" id="full_name" name="full_name" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+254…" required />
+              </div>
+              <div class="field">
+                <label for="purpose">Purpose of enquiry</label>
+                <select id="purpose" name="purpose">
+                  <option value="Leisure stay">Leisure stay</option>
+                  <option value="Business travel">Business travel</option>
+                  <option value="Conference">Conference</option>
+                  <option value="Church conference">Church conference</option>
+                  <option value="Seminar">Seminar</option>
+                  <option value="Team building">Team building</option>
+                  <option value="Celebration">Celebration</option>
+                  <option value="Dining">Dining</option>
+                  <option value="Other">Other — I will explain below</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-fieldset">
+            <legend class="form-legend">Which property?</legend>
+            <div class="form-row form-row--one">
+              <div class="field">
+                <label for="property">Property</label>
+                <select id="property" name="property" required>
+                  <option value="malewa" selected>Malewa Riverside</option>
+                  <option value="clavina">Clavina</option>
+                  <option value="clavina-pax">Clavina Pax</option>
+                </select>
+                <span class="hint">One enquiry form covers all three properties — the fields below change to match your choice.</span>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-fieldset" data-property="malewa clavina">
+            <legend class="form-legend">Your stay</legend>
+            <div class="form-row">
+              <div class="field">
+                <label for="check_in">Arrival</label>
+                <input type="date" id="check_in" name="check_in" required />
+              </div>
+              <div class="field">
+                <label for="check_out">Departure</label>
+                <input type="date" id="check_out" name="check_out" required />
+              </div>
+            </div>
+            <div class="form-row form-row--one">
+              <div class="field">
+                <label for="guests_stay">Number of guests</label>
+                <select id="guests_stay" name="guests_stay" required>
+                  <option value="">Choose guests</option>
+                  <option value="1">1 guest</option>
+                  <option value="2">2 guests</option>
+                  <option value="3">3 guests</option>
+                  <option value="4">4 guests</option>
+                  <option value="5">5 guests</option>
+                  <option value="6">6 guests</option>
+                  <option value="7-10">7–10 guests</option>
+                  <option value="11-20">11–20 guests</option>
+                  <option value="20+">More than 20</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-fieldset" data-property="malewa">
+            <legend class="form-legend">Malewa accommodation</legend>
+            <div class="form-row">
+              <div class="field">
+                <label for="accommodation">Accommodation</label>
+                <select id="accommodation" name="accommodation" required>
+                  <option value="">Choose accommodation</option>
+                  <option value="cottages">Cottage</option>
+                  <option value="ololeshwa">Ololeshwa Cottage</option>
+                  <option value="not_sure">Not sure — recommend for me</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="occupancy">Occupancy</label>
+                <select id="occupancy" name="occupancy" required>
+                  <option value="">Choose occupancy</option>
+                  <option value="single">Single occupancy</option>
+                  <option value="double">Double occupancy</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="meal_plan">Meal plan</label>
+                <select id="meal_plan" name="meal_plan" required>
+                  <option value="bb">Bed &amp; breakfast (BB)</option>
+                  <option value="hb">Half board (HB)</option>
+                  <option value="fb">Full board (FB)</option>
+                  <option value="self_catering">Self catering — Ololeshwa Cottage</option>
+                </select>
+                <span class="hint">Meal plans differ by accommodation — this list updates to match your choice.</span>
+              </div>
+              <div class="field">
+                <label for="rooms">Number of rooms</label>
+                <select id="rooms" name="rooms" required>
+                  <option value="">Choose rooms</option>
+                  <option value="1">1 room</option>
+                  <option value="2">2 rooms</option>
+                  <option value="3">3 rooms</option>
+                  <option value="4">4 rooms</option>
+                  <option value="5">5 rooms</option>
+                  <option value="6">6 rooms</option>
+                </select>
+                <span class="hint">Cottage rates are quoted for 1–4 rooms or 5–6 rooms. The Ololeshwa Cottage has four ensuite rooms.</span>
+              </div>
+            </div>
+
+            <div class="estimator" id="rate-summary">
+              <span class="estimator__label">Indicative rate</span>
+              <p class="estimator__amount" id="rate-amount">Rate on request</p>
+              <p class="estimator__detail" id="rate-detail">Tell us the accommodation, occupancy and meal plan you would like and we will confirm the applicable rate.</p>
+              <p class="estimator__note">Indicative only. Rates are per room, per night, in Kenyan shillings, and are confirmed by the resort with your booking.</p>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-fieldset" data-property="clavina">
+            <legend class="form-legend">Clavina accommodation</legend>
+            <div class="notice">
+              <strong>Clavina's rooms are being confirmed</strong>
+              <span>We are not showing room types or rates for Clavina yet. Send your dates and we will come back with what is available.</span>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-fieldset" data-property="clavina-pax">
+            <legend class="form-legend">Your table</legend>
+            <div class="form-row form-row--three">
+              <div class="field">
+                <label for="dining_date">Date</label>
+                <input type="date" id="dining_date" name="dining_date" required />
+              </div>
+              <div class="field">
+                <label for="dining_time">Time</label>
+                <input type="time" id="dining_time" name="dining_time" required />
+              </div>
+              <div class="field">
+                <label for="guests_dining">Number of guests</label>
+                <select id="guests_dining" name="guests_dining" required>
+                  <option value="">Choose guests</option>
+                  <option value="1">1 guest</option>
+                  <option value="2">2 guests</option>
+                  <option value="3">3 guests</option>
+                  <option value="4">4 guests</option>
+                  <option value="5-6">5–6 guests</option>
+                  <option value="7-10">7–10 guests</option>
+                  <option value="11-20">11–20 guests</option>
+                  <option value="20+">More than 20</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row form-row--one">
+              <div class="field">
+                <label for="occasion">Occasion</label>
+                <select id="occasion" name="occasion">
+                  <option value="Dinner">Dinner</option>
+                  <option value="Lunch">Lunch</option>
+                  <option value="Coffee or drinks">Coffee or drinks</option>
+                  <option value="Celebration">Celebration</option>
+                  <option value="Group or event dining">Group or event dining</option>
+                  <option value="Other">Other — I will explain below</option>
+                </select>
+                <span class="hint">Menus, service times and reservations are confirmed by the restaurant.</span>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-fieldset">
+            <legend class="form-legend">Anything else</legend>
+            <div class="form-row form-row--one">
+              <div class="field">
+                <label for="requests">Your message</label>
+                <textarea id="requests" name="requests" placeholder="Group size, dietary needs, arrival time, conference requirements, celebration plans — anything we should know."></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn--primary">Send enquiry</button>
+            <span class="form-note">This is an enquiry, not a confirmed booking. No payment is taken here.</span>
+          </div>
+        </form>
       </div>
 
-      <!-- FORM -->
-      <form class="book-form" id="booking-form" novalidate>
-        <h3 class="display-md">Your details</h3>
-        <p class="form-intro">All fields marked with * are required.</p>
-
-        <div class="form-row">
-          <div class="form-field">
-            <label for="full_name">Full name *</label>
-            <input type="text" id="full_name" name="full_name" required autocomplete="name" />
-          </div>
-          <div class="form-field">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required autocomplete="email" />
-          </div>
+      <div class="grid-3 space-top-xl">
+        <div class="rule-item">
+          <h3>1. Send your enquiry</h3>
+          <p>Property, dates and what you have in mind — the more detail, the better the reply.</p>
         </div>
-
-        <div class="form-row">
-          <div class="form-field">
-            <label for="phone">Phone *</label>
-            <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+254…" />
-          </div>
-          <div class="form-field">
-            <label for="location">Property *</label>
-            <select id="location" name="location" required>
-              <option value="">Choose a property</option>
-              <option value="diani">Baraka Diani — coast</option>
-              <option value="naivasha">Baraka Naivasha — lake</option>
-              <option value="nairobi">Baraka Nairobi — city</option>
-            </select>
-          </div>
+        <div class="rule-item">
+          <h3>2. We confirm</h3>
+          <p>We come back with availability, the applicable rate and anything else you asked about.</p>
         </div>
-
-        <div class="form-row triple">
-          <div class="form-field">
-            <label for="check_in">Check-in *</label>
-            <input type="date" id="check_in" name="check_in" required />
-          </div>
-          <div class="form-field">
-            <label for="check_out">Check-out *</label>
-            <input type="date" id="check_out" name="check_out" required />
-          </div>
-          <div class="form-field">
-            <label for="room_type">Room type *</label>
-            <select id="room_type" name="room_type" required>
-              <option value="">Choose</option>
-              <option value="standard">Standard double</option>
-              <option value="premium">Premium / ocean or lake view</option>
-              <option value="suite">Suite</option>
-              <option value="family">Family (sleeps 3–4)</option>
-              <option value="not_sure">Not sure — recommend for me</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-field">
-            <label for="adults">Adults *</label>
-            <select id="adults" name="adults" required>
-              <option value="1">1 adult</option>
-              <option value="2" selected>2 adults</option>
-              <option value="3">3 adults</option>
-              <option value="4">4 adults</option>
-              <option value="5+">5 or more</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="children">Children</label>
-            <select id="children" name="children">
-              <option value="0" selected>No children</option>
-              <option value="1">1 child</option>
-              <option value="2">2 children</option>
-              <option value="3">3 children</option>
-              <option value="4+">4 or more</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-row single">
-          <div class="form-field">
-            <label for="notes">Anything we should know?</label>
-            <textarea id="notes" name="notes" placeholder="Special occasion, dietary needs, arrival time, transfers…"></textarea>
-          </div>
-        </div>
-
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">Send booking request</button>
-          <span class="form-note">No payment is taken now. We confirm within one working day.</span>
-        </div>
-      </form>
-
-      <!-- FAQs -->
-      <div style="margin-top: 96px;">
-        <span class="eyebrow">Good to know</span>
-        <h2 class="display-md" style="margin-top: 12px; margin-bottom: 40px;">Before you book.</h2>
-
-        <div class="faq-grid">
-          <div>
-            <h4 style="margin-bottom: 8px;">Check-in &amp; check-out</h4>
-            <p style="color: var(--slate); font-size: 0.95rem;">Check-in from 2:00 p.m., check-out by 11:00 a.m. Early or late arrivals possible on request.</p>
-          </div>
-          <div>
-            <h4 style="margin-bottom: 8px;">Payment</h4>
-            <p style="color: var(--slate); font-size: 0.95rem;">50% deposit on confirmation, balance on arrival. M-Pesa, bank transfer, and card accepted.</p>
-          </div>
-          <div>
-            <h4 style="margin-bottom: 8px;">Cancellation</h4>
-            <p style="color: var(--slate); font-size: 0.95rem;">Free cancellation up to 14 days before your check-in date. Full deposit charged after that.</p>
-          </div>
-          <div>
-            <h4 style="margin-bottom: 8px;">Children</h4>
-            <p style="color: var(--slate); font-size: 0.95rem;">Warmly welcomed at all three properties. Cots and high chairs on request.</p>
-          </div>
+        <div class="rule-item">
+          <h3>3. You confirm your booking</h3>
+          <p>Check-in and check-out times, meal inclusions and payment arrangements are confirmed with your booking.</p>
         </div>
       </div>
 
+      <div class="notice space-top-lg">
+        <strong>Prefer to talk?</strong>
+        <span>Call <a href="tel:+254704025999">+254 704 025 999</a>, <a href="tel:+254704026208">+254 704 026 208</a> or <a href="tel:+254722968154">+254 722 968 154</a>, or email <a href="mailto:malewariversideresort@gmail.com">malewariversideresort@gmail.com</a>.</span>
+      </div>
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer" style="margin-top: 96px;">
+  <footer class="site-footer">
     <div class="container">
-      <div class="footer-grid">
+      <div class="site-footer__grid">
         <div>
-          <div class="brand-block">Baraka Collection</div>
-          <p class="footer-blurb">Three small Kenyan hotels, run with care. Coast, lake, and city.</p>
+          <p class="site-footer__brand">Our Properties</p>
+          <p class="site-footer__blurb">Malewa, Clavina and Clavina Pax — a riverside resort and cottages in Gilgil, a hotel, and the group's restaurant.</p>
         </div>
-        <div>
-          <h5>Properties</h5>
+        <nav aria-labelledby="footer-properties">
+          <h2 id="footer-properties">Properties</h2>
           <ul>
-            <li><a href="diani.html">Baraka Diani</a></li>
-            <li><a href="naivasha.html">Baraka Naivasha</a></li>
-            <li><a href="nairobi.html">Baraka Nairobi</a></li>
+            <li><a href="malewa.html">Malewa Riverside Resort &amp; Cottages</a></li>
+            <li><a href="clavina.html">Clavina</a></li>
+            <li><a href="clavina-pax.html">Clavina Pax</a></li>
+            <li><a href="properties.html">All properties</a></li>
           </ul>
-        </div>
-        <div>
-          <h5>Visit</h5>
+        </nav>
+        <nav aria-labelledby="footer-explore">
+          <h2 id="footer-explore">Explore</h2>
           <ul>
-            <li><a href="about.html">About us</a></li>
-            <li><a href="book.html">Book a stay</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="stay.html">Accommodation</a></li>
+            <li><a href="dining.html">Dining</a></li>
+            <li><a href="conferences.html">Conferences &amp; Events</a></li>
+            <li><a href="team-building.html">Team Building</a></li>
+            <li><a href="experiences.html">Experiences</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
           </ul>
-        </div>
+        </nav>
         <div>
-          <h5>Get in touch</h5>
+          <h2>Visit &amp; contact</h2>
           <ul>
-            <li>hello@barakacollection.co.ke</li>
-            <li>+254 700 000 000</li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact &amp; directions</a></li>
+            <li><a href="book.html">Book / make an enquiry</a></li>
+          </ul>
+          <h2 class="site-footer__subhead">Malewa Riverside</h2>
+          <ul>
+            <li>Malewa-Kimbo Area, Gilgil<br />On the shores of River Malewa<br />About 12 km from Gilgil town</li>
+            <li><a href="tel:+254704025999">+254 704 025 999</a></li>
+            <li><a href="tel:+254704026208">+254 704 026 208</a></li>
+            <li><a href="tel:+254722968154">+254 722 968 154</a></li>
+            <li><a href="mailto:malewariversideresort@gmail.com">malewariversideresort@gmail.com</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <div>&copy; 2026 Baraka Collection. All rights reserved.</div>
-        <div>Made in Kenya.</div>
+      <div class="site-footer__bottom">
+        <p>&copy; 2026 Our Properties — Malewa, Clavina &amp; Clavina Pax.</p>
+        <p>Malewa-Kimbo Area, Gilgil, Kenya</p>
       </div>
     </div>
   </footer>
