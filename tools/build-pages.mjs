@@ -29,6 +29,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const ORIGIN = "https://malewariversideresort.co.ke";
 const GROUP_NAME = "Our Properties";
 const GROUP_DESCRIPTOR = "Malewa · Clavina · Clavina Pax";
+const MALEWA_TAGLINE = "Where nature meets comfort.";
 
 const PHONES = [
   { label: "+254 704 025 999", href: "tel:+254704025999" },
@@ -37,6 +38,21 @@ const PHONES = [
 ];
 const EMAIL = "malewariversideresort@gmail.com";
 const SOCIAL_IMAGE = `${ORIGIN}/assets/images/branding/malewa-riverside-social.jpg`;
+
+const SOCIAL = {
+  malewa: [
+    {
+      label: "Facebook",
+      handle: "Malewa Riverside Resorts",
+      href: "https://www.facebook.com/profile.php?id=61586919933587",
+    },
+    {
+      label: "TikTok",
+      handle: "@malewa_riverside_resort",
+      href: "https://www.tiktok.com/@malewa_riverside_resort",
+    },
+  ],
+};
 
 const NAV_ITEMS = [
   { key: "home", label: "Home", href: "index.html" },
@@ -130,6 +146,14 @@ const propertyCard = ({ accent, role, name, copy, href, linkLabel, src, alt, slo
             <a class="link-arrow" href="${href}">${linkLabel}</a>
           </div>
         </article>`;
+
+const socialLinks = (items) =>
+  items
+    .map(
+      (item) =>
+        `<li><a href="${item.href}" target="_blank" rel="noopener noreferrer">${item.label} — ${item.handle}</a></li>`
+    )
+    .join("\n            ");
 
 /* --- Page shell ----------------------------------------------------- */
 
@@ -233,6 +257,10 @@ function footer() {
             <li>Malewa-Kimbo Area, Gilgil<br />On the shores of River Malewa<br />About 12 km from Gilgil town</li>
             ${PHONES.map((phone) => `<li><a href="${phone.href}">${phone.label}</a></li>`).join("\n            ")}
             <li><a href="mailto:${EMAIL}">${EMAIL}</a></li>
+          </ul>
+          <h2 class="site-footer__subhead">Follow Malewa</h2>
+          <ul>
+            ${socialLinks(SOCIAL.malewa)}
           </ul>
         </div>
       </div>
@@ -374,8 +402,9 @@ const resortSchema = JSON.stringify(
     "@context": "https://schema.org",
     "@type": "Resort",
     name: "Malewa Riverside Resort & Cottages",
+    slogan: MALEWA_TAGLINE,
     description:
-      "A peaceful riverside retreat for leisure, business and celebrations, on the shores of the River Malewa in the Malewa-Kimbo area of Gilgil, Kenya.",
+      "A peaceful, transformative retreat for leisure, business and celebrations, on the shores of the River Malewa in the Malewa-Kimbo area of Gilgil, Kenya. Where nature meets comfort.",
     url: `${ORIGIN}/malewa.html`,
     email: EMAIL,
     telephone: ["+254-704025999", "+254-704026208", "+254-722968154"],
@@ -385,6 +414,7 @@ const resortSchema = JSON.stringify(
       addressLocality: "Gilgil",
       addressCountry: "KE",
     },
+    sameAs: SOCIAL.malewa.map((item) => item.href),
     amenityFeature: [
       "Luxury cottages",
       "Main Restaurant",
@@ -458,7 +488,7 @@ const homeBody = `  <header class="hero">
           accent: "malewa",
           role: "Hotel &middot; Resort &middot; Cottages",
           name: "Malewa",
-          copy: "Riverside cottages, the Ololeshwa Cottage, a main restaurant and coffee bar, conference halls and open grounds — on the shores of the River Malewa in Gilgil.",
+          copy: "Riverside cottages, the Ololeshwa Cottage, a main restaurant and coffee bar, conference halls and open grounds — on the shores of the River Malewa in Gilgil. Where nature meets comfort.",
           href: "malewa.html",
           linkLabel: "Explore Malewa",
           src: IMG.mCottages,
@@ -502,7 +532,7 @@ const homeBody = `  <header class="hero">
         <div class="feature__body">
           <span class="eyebrow">Malewa Riverside Resort &amp; Cottages</span>
           <h2 class="display-md">A riverside retreat in Gilgil.</h2>
-          <p class="lede">On the shores of the River Malewa in the Malewa-Kimbo area, about 12 km from Gilgil town — a peaceful setting for leisure, business and celebrations.</p>
+          <p class="lede">On the shores of the River Malewa in the Malewa-Kimbo area, about 12 km from Gilgil town — a peaceful, transformative retreat for leisure, business and celebrations.</p>
           <p>Cottages and the private four-room Ololeshwa Cottage, the Main Restaurant and the Skyline Coffee Bar, conference halls with an executive breakout room, an outdoor gazebo and expansive grounds for team building.</p>
           <div class="btn-row">
             <a href="malewa.html" class="btn btn--outline-light">Explore Malewa</a>
@@ -734,7 +764,7 @@ const propertiesBody = `  <header class="page-hero">
           accent: "malewa",
           role: "Hotel &middot; Resort &middot; Cottages",
           name: "Malewa",
-          copy: "Malewa Riverside Resort &amp; Cottages sits on the shores of the River Malewa in the Malewa-Kimbo area of Gilgil, about 12 km from Gilgil town.",
+          copy: "Malewa Riverside Resort &amp; Cottages sits on the shores of the River Malewa in the Malewa-Kimbo area of Gilgil, about 12 km from Gilgil town. Where nature meets comfort.",
           href: "malewa.html",
           linkLabel: "Explore Malewa",
           src: IMG.mCottages,
@@ -883,9 +913,9 @@ const malewaBody = `  <header class="page-hero">
     })}
     <div class="container">
       <div class="page-hero__inner">
-        <span class="eyebrow">Malewa</span>
+        <span class="eyebrow">Malewa &middot; ${MALEWA_TAGLINE}</span>
         <h1 class="display-xl">Malewa Riverside Resort &amp; Cottages.</h1>
-        <p class="lede">A peaceful riverside retreat in Gilgil for leisure, business and celebrations — on the shores of the River Malewa, about 12 km from Gilgil town.</p>
+        <p class="lede">A peaceful, transformative retreat in Gilgil for leisure, business and celebrations — on the shores of the River Malewa, about 12 km from Gilgil town.</p>
       </div>
     </div>
   </header>
@@ -2196,7 +2226,7 @@ const aboutBody = `  <header class="page-hero">
         <div class="intro-grid__body">
           <h2 class="display-lg">Stay, dine and gather in one place.</h2>
           <p class="lede">The group covers the three reasons people come: somewhere to stay, somewhere to eat, and somewhere to hold a programme that needs both.</p>
-          <p>Malewa Riverside Resort &amp; Cottages is the riverside property — in the Malewa-Kimbo area of Gilgil, on the shores of the River Malewa, about 12 km from Gilgil town. It is a peaceful retreat for leisure, business and celebrations, with cottages and the private Ololeshwa Cottage, the Main Restaurant and the Skyline Coffee Bar, conference facilities and open grounds.</p>
+          <p>Malewa Riverside Resort &amp; Cottages is the riverside property — in the Malewa-Kimbo area of Gilgil, on the shores of the River Malewa, about 12 km from Gilgil town. It is a peaceful, transformative retreat for leisure, business and celebrations, with cottages and the private Ololeshwa Cottage, the Main Restaurant and the Skyline Coffee Bar, conference facilities and open grounds.</p>
           <p>Clavina is the group's hotel, and Clavina Pax is the group's restaurant. Their pages are being completed as the client confirms the detail — we have not filled the gaps with guesses.</p>
         </div>
       </div>
@@ -2283,7 +2313,7 @@ const aboutBody = `  <header class="page-hero">
           "Legal and trading names for each property",
           "The story of the group, if it should be told",
           "Ownership, founding and any heritage details",
-          "Social media accounts",
+          "Social media accounts for Clavina and Clavina Pax",
         ],
       })}
     </div>
@@ -2345,9 +2375,11 @@ const contactBody = `  <header class="page-hero page-hero--short">
           <p>For stays, conferences, team building, dining and group bookings.</p>`,
           },
           {
-            title: "Enquiries",
-            html: `<p>Use the enquiry form to tell us which property you are asking about, with your dates and what you need.</p>
-          <p><a class="link-arrow" href="book.html">Make an enquiry</a></p>`,
+            title: "Follow Malewa",
+            html: `<ul>
+            ${socialLinks(SOCIAL.malewa)}
+          </ul>
+          <p>For photos and updates from the resort.</p>`,
           },
         ])}
       </div>
@@ -2393,7 +2425,7 @@ const contactBody = `  <header class="page-hero page-hero--short">
           "Clavina phone number, email and address",
           "Clavina Pax phone number and email",
           "A WhatsApp number, if the group uses one",
-          "Social media accounts for each property",
+          "Social media accounts for Clavina and Clavina Pax",
           "Preferred escalation contact for group bookings",
         ],
       })}
@@ -2708,12 +2740,12 @@ const PAGES = [
     file: "malewa.html",
     nav: { active: "properties", variant: "overlay" },
     body: malewaBody,
-    title: "Malewa Riverside Resort &amp; Cottages | Gilgil, Kenya",
+    title: "Malewa Riverside Resort &amp; Cottages | Where Nature Meets Comfort",
     description:
-      "Malewa Riverside Resort & Cottages in the Malewa-Kimbo area of Gilgil: luxury cottages, the Ololeshwa Cottage, the Main Restaurant and Skyline Coffee Bar, conference halls, team building grounds and riverside experiences.",
+      "Malewa Riverside Resort & Cottages in the Malewa-Kimbo area of Gilgil: luxury cottages, the Ololeshwa Cottage, the Main Restaurant and Skyline Coffee Bar, conference halls, team building grounds and riverside experiences. Where nature meets comfort.",
     ogTitle: "Malewa Riverside Resort &amp; Cottages",
     ogDescription:
-      "A peaceful riverside retreat for leisure, business and celebrations — about 12 km from Gilgil town.",
+      "Where nature meets comfort. A peaceful, transformative retreat for leisure, business and celebrations — about 12 km from Gilgil town.",
     schema: resortSchema,
   },
   {
@@ -2820,7 +2852,7 @@ const PAGES = [
     body: contactBody,
     title: "Contact &amp; Directions | Malewa Riverside Resort &amp; Cottages",
     description:
-      "Contact Malewa Riverside Resort & Cottages: Malewa-Kimbo Area, Gilgil, on the shores of the River Malewa. Call +254 704 025 999, +254 704 026 208 or +254 722 968 154.",
+      "Contact Malewa Riverside Resort & Cottages: Malewa-Kimbo Area, Gilgil, on the shores of the River Malewa. Call +254 704 025 999, +254 704 026 208 or +254 722 968 154. Follow us on Facebook and TikTok.",
     ogTitle: "Contact the group",
     ogDescription:
       "Malewa-Kimbo Area, Gilgil — about 12 km from Gilgil town, on the shores of the River Malewa.",
